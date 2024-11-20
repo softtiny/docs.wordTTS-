@@ -1,0 +1,32 @@
+name: Dot to svg
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install graphviz
+        run: |
+          sudo apt install -y graphviz
+          cd graph
+          if [[ ! -d svgs ]];then
+              mkdir svgs
+          fi
+          for fname in `ls .`;do
+              echo $fname
+              if [[ -f $fname ]];then
+                  noext="${fname%.*}"
+                  outname="${noext}.svg"
+                  dot -Tsvg -o "./svgs/$outname" $fname
+                  echo $outname
+              fi
+          done
+
+
+      - name: Upload build
+        uses: actions/upload-artifact@master
+        with:
+          name: graph.svgs
+          path: graph/svgs
