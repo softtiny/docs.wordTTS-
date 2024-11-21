@@ -39,6 +39,7 @@ next-env.d.ts
 
 # Thumbnail files
 ._*
+.tmp/
 
 *.cover
 *.py,cover
