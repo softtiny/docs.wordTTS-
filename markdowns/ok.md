@@ -1,3 +1,4 @@
+# Includes
 ```mermaid
     mindmap
     subtitle/captions
@@ -10,4 +11,13 @@
                 icons
         number
             int to string
+```
+
+### Database
+```json
+{
+    "key":"",
+    "type":"skill/item/hero/player/team",
+    "list":["XXX","AB","CD"]
+}
 ```
